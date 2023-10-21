@@ -1,0 +1,38 @@
+<section id="detailsPage">
+    <div id="detailsInfo">
+        <h1>Name: {{element.name}}</h1>
+        <div class="info"><img src="{{element.image}}"></div>
+
+        <div class="info">
+            <h3>Type: {{element.type}}</h3>
+            <h3>Year of Production: {{element.production}}</h3>
+            <h3>Years of Exploitation: {{element.exploitation}}</h3>
+            <h3>Damages: {{element.damages}}</h3>
+            <h3>Description: {{element.description}}</h3>
+            <h2>Price: ${{element.price}}</h2>
+        </div>
+
+        <!--If there is user logged in-->
+
+        {{#if isAuthenticated}}
+        <div class="buttons">
+
+            {{#if isOwner}}
+
+            <!--If user is owner-->
+            <a href="/element/{{element._id}}/edit" class="edit-btn">Edit</a>
+            <a href="/element/{{element._id}}/delete" class="delete-btn">Delete</a>
+            {{else}}
+
+            {{#if isActed}}
+            {{!-- <p class="thanks-for-vote">Thanks For Voting</p> --}}
+            <p><span class="buy">Thank You For Your Purchase</span></p>
+            {{else}}
+            <a href="/element/{{element._id}}/buy" class="buy-btn">Buy</a>
+            {{!-- <a href="/element/{{element._id}}/vote" class="vote-up">Vote</a> --}}
+            {{/if}}
+            {{/if}}
+            {{/if}}
+        </div>
+    </div>
+</section>
